@@ -1,0 +1,14 @@
+# SQL multiple join query
+This query uses multiple joins to find Rockbuster's top 5 customers
+
+SELECT SUM(A.amount) AS total_amount_paid, E.country, D.city, B.customer_id, B.first_name, B.last_name
+FROM payment A 
+INNER JOIN customer B ON A.customer_id = B.customer_id
+INNER JOIN address C ON B.address_id = C.address_id
+INNER JOIN city D ON C.city_id = D.city_id
+INNER JOIN country E ON D.country_id = E.country_id
+WHERE city IN ('Aurora', 'Adoni', 'Nezahualcyotl', 'Kurashiki', 'Sivas', 'Celaya', 'Dhule (Dhulia)', 'Jakarta',
+		 'San Bernardino', 'Atlixco')
+GROUP BY country, city, first_name, last_name, B.customer_id
+ORDER BY SUM(A. amount) DESC
+LIMIT 5;
