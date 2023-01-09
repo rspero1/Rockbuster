@@ -1,4 +1,4 @@
-# SQL Common Table Expression
+# SQL Subquery 
 used to find the average amount paid by the top 5 customers from the top 10 cities.
 
 EXPLAIN SELECT AVG (total_amount_paid) AS average
